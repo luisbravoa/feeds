@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, ActivityIndicator, RefreshControl } from "react-native";
+import { View, ActivityIndicator, RefreshControl, Text } from "react-native";
 import { getArticles } from "../api";
 import { FlatList } from "react-native-gesture-handler";
 import ArticleItem from "./ArticleItem";
@@ -26,7 +26,7 @@ class ArticleList extends Component {
     this.setState({
       loading: true,
     });
-    getArticles(feed.q).then((response) => {
+    getArticles(feed.q, feed.sources).then((response) => {
       const { totalResults, articles } = response;
       this.setState({
         loading: false,
@@ -47,17 +47,20 @@ class ArticleList extends Component {
   render() {
     return (
       <View key={this.state.feed.id}>
-        <FlatList
-          data={this.state.articles}
-          renderItem={({ item }) => <ArticleItem article={item} />}
-          keyExtractor={(item) => item.url}
-          refreshControl={
-            <RefreshControl
-              refreshing={this.state.refreshing}
-              onRefresh={this.onRefresh}
-            />
-          }
-        ></FlatList>
+        {!this.state.loading && (
+          <FlatList
+            data={this.state.articles}
+            renderItem={({ item }) => <ArticleItem article={item} />}
+            keyExtractor={(item) => item.url}
+            refreshControl={
+              <RefreshControl
+                refreshing={this.state.refreshing}
+                onRefresh={this.onRefresh}
+              />
+            }
+            ListEmptyComponent={() => <Text>No Results</Text>}
+          ></FlatList>
+        )}
         {this.state.loading && <ActivityIndicator size="large" />}
       </View>
     );

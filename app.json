@@ -21,6 +21,8 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "Mobile app to create news feeds using https://newsapi.org/ Rest API.",
+    "githubUrl": "https://github.com/luisbravoa/feeds"
   }
 }

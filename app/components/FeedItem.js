@@ -13,7 +13,7 @@ class FeedItem extends Component {
       return this.props.initials;
     }
 
-    return name.length < 5 ? name : name.split(" ").map((word) => word[0]);
+    return name.length < 4 ? name : name.split(" ").map((word) => word[0]);
   }
 
   render() {
@@ -47,7 +47,6 @@ const styles = StyleSheet.create({
     flex: 0,
     justifyContent: "center",
     alignContent: "center",
-    borderColor: "black",
     borderWidth: 1,
     borderRadius: 100 / 2,
     padding: 10,
@@ -62,7 +61,7 @@ const styles = StyleSheet.create({
   },
   iconText: {
     textAlign: "center",
-    fontSize: 20,
+    fontSize: 18,
   },
   nameText: {
     textAlign: "center",
