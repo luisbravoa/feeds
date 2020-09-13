@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, StyleSheet, Text, Image } from "react-native";
+import { View, StyleSheet, Text, Image, Button, Linking } from "react-native";
 
 class ArticleItem extends Component {
   constructor(props) {
@@ -18,6 +18,10 @@ class ArticleItem extends Component {
           <Text style={styles.description} numberOfLines={4}>
             {this.props.article.description}
           </Text>
+          <Button
+            onPress={() => Linking.openURL(this.props.article.url)}
+            title="Visit Website"
+          />
         </View>
       </View>
     );
@@ -26,7 +30,7 @@ class ArticleItem extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: 15,
+    marginBottom: 25,
     borderRadius: 10,
   },
   image: {
@@ -45,6 +49,7 @@ const styles = StyleSheet.create({
   },
   description: {
     fontSize: 14,
+    marginBottom: 10,
   },
 });
 

@@ -1,9 +1,13 @@
 const apiKey = "75faddb358e44181908ba782c8d4a604";
 const baseUrl = "https://newsapi.org/v2/";
 
-export function getArticles(q, sources) {
+export function getArticles(q, sources, start = 1, pageSize = 10) {
+  const page = Math.ceil(start / pageSize);
+
   const params = {
     apiKey,
+    pageSize,
+    page,
   };
 
   if (q) {

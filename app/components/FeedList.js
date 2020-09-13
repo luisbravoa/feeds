@@ -62,6 +62,7 @@ const styles = StyleSheet.create({
     height: 85,
     justifyContent: "center",
     alignContent: "center",
+    alignItems: "center",
     paddingLeft: 10,
   },
 });

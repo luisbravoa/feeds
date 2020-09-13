@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
   },
   iconText: {
     textAlign: "center",
-    fontSize: 18,
+    fontSize: 16,
   },
   nameText: {
     textAlign: "center",
